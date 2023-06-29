@@ -1,0 +1,27 @@
+package com.javarush.task.pro.task15.task1521;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Scanner;
+import java.net.URL;
+
+/* 
+Временное сохранение файла
+*/
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
+//        String line = "https://habr.com/ru/all/";
+        //напишите тут ваш код
+        URL url = new URL(line);
+        InputStream input = url.openStream();
+        Path tempFile = Files.createTempFile(null, null);
+        Files.write(tempFile, input.readAllBytes());
+    }
+}
+
+
